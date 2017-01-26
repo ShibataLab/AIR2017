@@ -44,25 +44,25 @@
 		%A demonstration is performed by moving the \\
 		%Baxter arms in the appropriate trajectory
 	};
-		
+			
 	%\node[north right = of teaching, basic box = orange, header = Trajectory Parameterization] (dmp)
 	\node[north right = of teaching, basic box = orange, header = Learn Trajectory] (dmp) {
 		%Baxter Left Arm Trajectory\\
 		\includegraphics[width=\scaling]{dmp}%\\
 		%Recorded trajectory is parameterized by DMP
 	};
-			
+				
 	\node[east below = of teaching, basic box = green, header = Testing Phase] (testing) {
 		%Modified Posture\\
 		\includegraphics[width=\scaling]{testing}%\\
 		%DMP can accomodate new posture
 	};
-		
+			
 	\node[north right = of testing, basic box = red, header = DMP Generalization] (generalization){
 		%DMP Trajectory\\
 		\includegraphics[width=\scaling]{dmp_new}
 	};
-		
+			
 	\path[ultra thick, blue, ->](teaching) edge[->] (dmp);
 	\path[ultra thick, orange, ->](dmp) edge[->] (testing);
 	\path[ultra thick, green, ->](testing) edge[->] (generalization);
