@@ -9,8 +9,8 @@
     point/.style     = {coordinate},
     arrow/.style     = {thick, ->, >=stealth'},
     to/.style        = {->,>=stealth', shorten >=1pt, semithick, font=\footnotesize, draw=green},
-    line/.style      = {line width=0.8mm, draw=red},
-    darrow/.style     = { <->, line width=0.8mm, draw=red},
+    line/.style      = {line width=0.4mm, draw=blue},
+    darrow/.style     = { <->, line width=0.4mm, draw=blue},
     decision/.style  = {draw, diamond, minimum width=\BoxWidth, minimum height=1cm, text centered, aspect=2, font=\footnotesize},
     process/.style   = {draw, rectangle, minimum width=\BoxWidth, minimum height=1cm, text centered, text width=\BoxWidth, font=\footnotesize},
     startstop/.style = {draw, rectangle, rounded corners, minimum width=\BoxWidth, minimum height=1cm,text centered, text width=\BoxWidth, font=\footnotesize},
@@ -33,11 +33,9 @@
 		\foreach \y in {0,1,...,9} {\node[anchor=east] at (0,\y/10) {0.\y};}
 		\fi
 		\begin{scope}[x={(image.south east)},y={(image.north west)}]
-			%\draw[to] (0.85,0.90) node[box,text width=3cm] {Baxter Robot} -- (0.62,0.82);
 			\draw[line] (0.30,0.60) -- (\ex,\ey);
 			\draw[line] (0.20,0.25) -- (\ex,\ey);
-			%\draw[to] (0.25,0.35) node[box] {Location of contact point} -- (0.64,0.59);
-			\draw[darrow](\ex,\ey) ++(-152:.2) arc (-152:-180:.2) node[xshift=-3cm, yshift=0.5cm, color=red, font=\huge] {\textbf{Angle of inclination ($\alpha$)}} ;
+			\draw[darrow](\ex,\ey) ++(-152:.2) arc (-152:-180:.2) node[xshift=-3cm, yshift=0.5cm, color=blue, font=\large] {Angle of inclination ($\alpha$)} ;
 		\end{scope}
 	\end{scope}
 \end{tikzpicture}
