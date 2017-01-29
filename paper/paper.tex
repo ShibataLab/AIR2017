@@ -39,33 +39,31 @@ Primitives}
 \authornote{Dr.~Trovato insisted his name be first.}
 \orcid{1234-5678-9012}
 \affiliation{%
-	\institution{Institute for Clarity in Documentation}
-	\streetaddress{P.O. Box 1212}
-	\city{Dublin}
-	\state{Ohio}
-	\postcode{43017-6221}
+	\institution{Kyushu Institute of Technology}
+	\city{Kitakyushu}
+	\state{Fukuoka}
+	\country{Japan}
 }
 \email{joshi-ravi-prakash@edu.brain.kyutech.ac.jp}
 
 \author{Nishanth Koganti}
 \authornote{The secretary disavows any knowledge of this author's actions.}
 \affiliation{%
-	\institution{Institute for Clarity in Documentation}
-	\streetaddress{P.O. Box 1212}
-	\city{Dublin}
-	\state{Ohio}
-	\postcode{43017-6221}
+	\institution{Nara Institute of Science and Technology}
+	\city{Ikoma}
+	\state{Nara}
+	\country{Japan}
 }
 \email{nishanth-k@is.naist.jp}
 
 \author{Tomohiro Shibata}
-\authornote{This author is the
-one who did all the really hard work.}
+\authornote{This author is the one who did all the really hard work.}
 \affiliation{%
-	\institution{The Th{\o}rv{\"a}ld Group}
-	\streetaddress{1 Th{\o}rv{\"a}ld Circle}
-	\city{Hekla}
-	\country{Iceland}}
+	\institution{Kyushu Institute of Technology}
+	\city{Kitakyushu}
+	\state{Fukuoka}
+	\country{Japan}
+}
 \email{tom@brain.kyutech.ac.jp}
 
 % images are stored inside images directory
@@ -113,7 +111,7 @@ one who did all the really hard work.}
 % We no longer use \terms command
 %\terms{Theory}
 
-\keywords{Robotic Clothing Assistance, Dynamic Movement Primitives (DMP), Human-Robot Interaction, Learning and Adaptive Systems}
+\keywords{Robotic Clothing Assistance, Dynamic Movement Primitives (DMP), Human-Robot Interaction, Learning and Adaptive Systems, Learning from Demonstration}
 
 
 \maketitle
@@ -130,19 +128,27 @@ Due to the demographic trend in developed countries, the robotic assistance in t
 
 In this study, we are investigating the applicability of using Dynamic Movement Primitives (DMP) as a task parameterization model for performing clothing assistance tasks. The robotic cloth manipulation task deals with putting the cloth on both the arms. The idea of using DMP is inspired from the fact that DMP can learn complex task from the demonstration \cite{ijspeert2003learning, schaal2006dynamic, ijspeert2013dynamical} and thus reduce the manual efforts to design the controller from scratch or to fine-tune the controller parameters. We choose the dual arm Baxter robot in this research as it is safe and flexible by design \cite{fitzgerald2013developing}.
 
-The rest of the paper is organized as follows. Section \ref{sec:related_works}, gives a brief overview about the related literature in this field. Section \ref{sec:dmp} introduces the mathematical formulation about Dynamic Movement Primitives. In Section \ref{sec:system_overview}, we describe our system and various components used in the experiments. Section \ref{sec:experiments} deals with the details about experiments performed. Section \ref{sec:results} shows the experimental results. Finally we conclude in Section \ref{sec:conclusions} with some future directions.
+The rest of the paper is organized as follows. Section \ref{sec:related_works}, gives a brief overview about the related literature in this field. Section \ref{sec:dmp} introduces the mathematical formulation about Dynamic Movement Primitives. In Section \ref{sec:system_overview}, we describe our system and various components used in the experiments. Section \ref{sec:experiments} deals with the details about experiments performed and their results. Finally we conclude in Section \ref{sec:conclusions} with some future directions.
 
 \section{Related Works}
 \label{sec:related_works}
-In this section, we provide brief overview of the related literature in this field. There has been significant number of research done in the field of Robotic Clothing Assistance. Colom{\'e} et al. \cite{colome2015friction} proposed a framework for Reinforcement Learning of robotic tasks in non-rigid environments. They performed the task of wrapping a scarf around the neck of a mannequin and used color based segmentation to distinguish mannequin, scarf and a mark placed on the nose of mannequin. The main focus of their work is to incorporate friction based model while performing clothing task. Gao et al. \cite{gao2015user, gao2016iterative} has focused on user upper-body modeling for personalized dressing by using top-view depth camera. Randomised decision forests was used to estimate user pose and proposed an online iterative path optimisation method to enable Baxter humanoid robot to assist human to wear a sleeveless jacket. Another interesting work by Kapusta et al. \cite{kapusta2016data} is focused towards designing a controller inspired from data-driven haptic perception. They classified the forces measured at robot's end effector by using hidden Markov models and performed the clothing task on hospital gown. Their focus was to classify force data for haptic perception with high accuracy. Klee et al. \cite{klee2015personalized} worked on personalized assistance for dressing a user, where they used vision module to monitor the human's motion. The robot request to user to move towards robot, monitors motion and puts hat on the user once users is rechable by the robot. Koganti et al. \cite{koganti2015cloth} proposed a framework for offline learning of cloth dynamics model using Gaussian Process Latent Variable Models (GP-LVM) by incorporating motion capture data and applying this model for the online tracking of human-cloth relationship using a depth sensor. They showed that the shared GP-LVM is able to learn reliable motion models of the T-shirt state for robotic clothing assistance tasks. Representing cloth state in low-dimensional field by using topology coordinates is another impressive work done by Tamei et al. \cite{tamei2011reinforcement}. They proposed Reinforcement Learning framework and demonstrated that the robot quickly learns a suitable arm motion for putting T-shirt into the mannequin's head. Yamazaki et al. \cite{yamazaki2013method, yamazaki2014bottom}  worked on bottom dressing by a life-sized humanoid robot, where they recognize the cloth state by using  optical flow on the images acquired from single camera. They showed that the robot can pull a bottom clothing item along the subject's legs.
+In this section, we provide brief overview of the related literature in this field. There has been significant number of research done in the field of Robotic Clothing Assistance by using vision system. Klee et al. \cite{klee2015personalized} worked on personalized assistance for dressing a user, where they used vision module to monitor the human's motion. The robot request to user to move towards robot, monitors motion and puts hat on the user once users is rechable by the robot. Yamazaki et al. \cite{yamazaki2013method, yamazaki2014bottom}  worked on bottom dressing by a life-sized humanoid robot, where they recognize the cloth state by using  optical flow on the images acquired from single camera. They showed that the robot can pull a bottom clothing item along the subject's legs. Yamakawa et al. \cite{yamakawa2011dynamic} proposed a new strategy for dynamic manipulation of sheet-like flexible objects by a high-speed robot system. The system consists of two high-speed multi-fingered hands mounted on two sliders and a high-speed vision system. The proposed system learns the necessary motor skills from the demonstration performed by a human subject. They validated the robot trajectory obtained from the motion planning method was with simulation results.
 
-Another related filed of research is motor-skills learning for Cloth Handling, in which Yamakawa et al. \cite{yamakawa2011dynamic} proposed a new strategy for dynamic manipulation of sheet-like flexible objects by a high-speed robot system. The system consists of two high-speed multi-fingered hands mounted on two sliders and a high-speed vision system. The proposed system learns the necessary motor skills from the demonstration performed by a human subject. They validated the robot trajectory obtained from the motion planning method was with simulation results. Another exciting work done by Mons{\'o} et al. \cite{monso2012pomdp}, where they proposed a probabilistic planner, based on Partially Observable Markov Decision Process (POMDP) approach, for reducing the inherent uncertainty of cloth sorting (isolation/extraction) task. Their approach relaxes the precision requirements of robot vision and manipulation.
+The robotic cloth handling is challending. Unlike rigid object manipulation using robots, which has mainly relied on precise robot control, the deformable objects rather require complex control scheme. Many researchers have used vision informtion with combination of techniques such as motor skills learning using Reinforcement Learning. Colom{\'e} et al. \cite{colome2015friction} proposed a framework for Reinforcement Learning of robotic tasks in non-rigid environments. They performed the task of wrapping a scarf around the neck of a mannequin and used color based segmentation to distinguish mannequin, scarf and a mark placed on the nose of mannequin. The main focus of their work is to incorporate friction based model while performing clothing task. Gao et al. \cite{gao2015user, gao2016iterative} has focused on user upper-body modeling for personalized dressing by using top-view depth camera. Randomised decision forests was used to estimate user pose and proposed an online iterative path optimisation method to enable Baxter humanoid robot to assist human to wear a sleeveless jacket. Another interesting work by Kapusta et al. \cite{kapusta2016data} is focused towards designing a controller inspired from data-driven haptic perception. They classified the forces measured at robot's end effector by using hidden Markov models and performed the clothing task on hospital gown. Their focus was to classify force data for haptic perception with high accuracy. Koganti et al. \cite{koganti2015cloth} proposed a framework for offline learning of cloth dynamics model using Gaussian Process Latent Variable Models (GP-LVM) by incorporating motion capture data and applying this model for the online tracking of human-cloth relationship using a depth sensor. They showed that the shared GP-LVM is able to learn reliable motion models of the T-shirt state for robotic clothing assistance tasks. Representing cloth state in low-dimensional field by using topology coordinates is another impressive work done by Tamei et al. \cite{tamei2011reinforcement}. They proposed Reinforcement Learning framework and demonstrated that the robot quickly learns a suitable arm motion for putting T-shirt into the mannequin's head. Another exciting work done by Mons{\'o} et al. \cite{monso2012pomdp}, where they proposed a probabilistic planner, based on Partially Observable Markov Decision Process (POMDP) approach, for reducing the inherent uncertainty of cloth sorting (isolation/extraction) task. Their approach relaxes the precision requirements of robot vision and manipulation.
+
+The problem of robotic clothing assistance not only depends on tracking the cloth dynamics but also the motor skills required to perform the task. A combination of such techniques are encouraged. However we see that there has been a lot of gap when compared it to the practical use cases in elderly care. The most important point should be the learning rate of the task. We believe that \textit{Learning from Demonstration} framework are quick to learn in cases which involve complex task specific dynamics. The problem of putting sleeveless T-shirt into the arms of mannequin is close to the practical use case. Therefore, we are putting our efforts to solve it.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{psi}
 	\caption{$\psi$ activations and weighted summation of Gaussians}
 	\label{fig:psi_activations}
 \end{figure}
+
+\begin{figure*}
+	\includegraphics[width=\linewidth]{flowchart_conf}
+	\caption{Work flow of Robotic cloth manipulation task. Initially a demonstration is performed by moving the Baxter arms in the appropriate trajectory. The demonstration is recorded and parameterized by DMP. Later posture of the mannequin is changed and accordingly the goal posture of DMP is modified. Now, the modified DMP can accommodate new posture.}
+	\label{fig:workflow}
+\end{figure*}
 
 \section{Dynamic Movement Primitives}
 \label{sec:dmp}
@@ -197,46 +203,32 @@ This ends by calculating the weight parameters across Gaussians. Optimization me
 
 \section{Overview of the System}
 \label{sec:system_overview}
-Robotic cloth manipulation task contains a dual arm humanoid robot Baxter. Setup of the system is shown in figure \ref{fig:setup}. We choose soft mannequin instead of a human for this preliminary experiment. Both the arms of mannequin are open and  given the support by a metallic stand, to avoid falling down the arms. The mannequin is positioned in such a way, so that it resides within the limits of work space of the Baxter robot. Both the arms of mannequin are facing towards robot. A Kinect V2 \cite{microsoft2014kinect} sensor is mounted on LCD display of Baxter root. Kinect sensor can see the mannequin and clothing article and provides depth information, which is necessary for mannequin tracking. The clothing article is put in arms of Baxter robot manually before starting the experiment.
-
-The Baxter robot is connected to a computer directly using Ethernet cable. It is controlled using Robot Operating System (ROS) \cite{quigley2009ros}, one of the widely used tool by the researchers in robotics community. We used Baxter robot's API, which are available and supported by ROS to command the robot. The Kinect sensor is controlled by Open source Kinect API for ROS \cite{iai_kinect2, libfreenect2}.
-
-\begin{figure*}
-	\includegraphics[width=\linewidth]{flowchart_conf}
-	\caption{Work flow of Robotic cloth manipulation task. Initially a demonstration is performed by moving the Baxter arms in the appropriate trajectory. The demonstration is recorded and parameterized by DMP. Later posture of the mannequin is changed and accordingly the goal posture of DMP is modified. Now, the modified DMP can accommodate new posture.}
-	\label{fig:workflow}
-\end{figure*}
-
-\section{Experiments}
-\label{sec:experiments}
-As per the formulation described in section \ref{sec:dmp}, DMP can learn by the demonstration. Therefore we start by performing a demonstration by holding the robot arm and move accordingly. During the demonstration, pose of the end-effector is recorded. The term pose collectively refers to position and orientation. Once the demonstration is finished, DMP is initialized using the recorded trajectory. Three DMP trajectories one for each coordinate axis are initialized for one arm. In this way, we have totally six DMP trajectories, which can control both the arms of Baxter robot. We performed following two experiments by using these trajectory: (a) Clothing task using position DMP (b) Failure detection using end-effector forces.
-
-\subsection{Clothing task using position DMP}
-The aim of this experiment is to put the clothing article on both the arms of mannequin by using DMP system. We use the position data to initialize the DMP trajectories, which are being used in this task. The posture of mannequin is changed by lifting the arms up or down. At this point, we use Kinect Sensor to get the 3D coordinates of the arm. Now we change the goal of DMP trajectories by using this information. The modified DMP can be acquired as described in section \ref{sec:dmp}.
-
-\subsection{Failure detection using end-effector forces}
-This experiment is designed to deal with failure cases. There can be many failure cases during the clothing task, such as the clothing article gets stuck into the fingers. In this experiment, we are using forces being applied on the end-effector of Baxter robot to detect the failure scenario. Appropriate action can be taken once the failure is detected.
-
-\section{Results}
-\label{sec:results}
-A soft mannequin was used in order to perform the clothing task. A sleeveless T-shirt was used during the experiment and the task was to put the clothing article on both the arms as shown in figure \ref{fig:various_posture}. Following subsections explains the results of the two experiments described above.
+As per the formulation described in section \ref{sec:dmp}, DMP can learn from demonstration. Therefore we start by performing a demonstration by holding the robot arm as shown in figure \ref{fig:workflow}. This is referred as ``Teaching Phase'', since in this phase, we are teaching skills to robot to perform the task.  During the demonstration, pose trajectory of the end-effector is recorded using Baxter API and stored in a file. The term pose collectively refers to position and orientation. Once the demonstration is finished, DMP is initialized using the recorded trajectory file. This is termed as ``Learn Trajectory'' phase. In this phase, recorded trajectory is parameterized by DMP system. The parameterized DMP can represents all the characteristics of original trajectory. Here, three DMP systems, one for each coordinate axis i.e., $x$, $y$ and $z$ are initialized for one arm. In this way, we have total six DMP systems, which can control both the arms of Baxter robot. In ``Testing Phase'', we change the posture of mannequin by lifting the arms up or down. At this point, we use Kinect Sensor to get the 3D coordinates of the arm. We change the goal of DMP trajectories by using this information. In this way, we have generalised DMP system, which can adapt modified posture referred as ``DMP Generalization''.
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{inclination}
-	\caption{Angle of Inclination}
-	\label{fig:inclination}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{trajectory}
+	\includegraphics[width=\linewidth]{all_traj}
 	\caption{Left arm trajectory of Baxter}
 	\label{fig:trajectory}
 \end{figure}
 
+\section{Experiments}
+\label{sec:experiments}
+Robotic cloth manipulation task contains a dual arm humanoid robot Baxter. Setup of the system is shown in figure \ref{fig:setup}. We choose soft mannequin instead of a human for this preliminary experiment. Both the arms of mannequin are open and  given the support by a metallic stand, to avoid falling down the arms. The mannequin is positioned in such a way, so that it resides within the limits of work space of the Baxter robot. Both the arms of mannequin are facing towards robot. A Kinect V2 \cite{microsoft2014kinect} sensor is mounted on LCD display of Baxter root. Kinect sensor can see the mannequin and clothing article and provides depth information, which is necessary for mannequin tracking. The clothing article is put in arms of Baxter robot manually before starting the experiment.
+
+The Baxter robot is connected to a computer directly using Ethernet cable. It is controlled using Robot Operating System (ROS) \cite{quigley2009ros}, one of the widely used tool by the researchers in robotics community. We used Baxter robot's API, which are available and supported by ROS to command the robot. The Kinect sensor is controlled by Open source Kinect API for ROS \cite{iai_kinect2, libfreenect2}. We performed following two experiments to validate our approach: (a) Clothing task using position DMP (b) Failure detection using end-effector forces.
+
+\begin{figure}
+	\includegraphics[width=0.7\linewidth]{inclination}
+	\caption{Angle of Inclination}
+	\label{fig:inclination}
+\end{figure}
+
 \subsection{Clothing task using position DMP}
+The aim of this experiment is to put the clothing article on both the arms of mannequin by using DMP system. We use the position data to initialize the DMP trajectories, which are being used in this task. The posture of mannequin is changed by lifting the arms up or down. At this point, we use Kinect Sensor to get the 3D coordinates of the arm. Now we change the goal of DMP trajectories by using this information. The modified DMP can be acquired as described in section \ref{sec:dmp}.
+
 In this experiment, the initialized DMP was modified to accommodate the new posture by changing the goal state of the DMP. The generated trajectory was then run on the Baxter robot as shown in figure \ref{fig:trajectory}. The newly generated DMP trajectory (shown in red color) was not only found well suited and capable of performing clothing task but also smooth compared to the original trajectory (shown in blue color). A video demonstartion of this experiment can be seen at YouTube\footnote{\url{http://youtu.be/Rb2JePazJjk}}.
 
-To eventuate this experiment, we performed it many times for various postures by keeping the arms at different-different height. During the experiment, we monitored the trajectory generated by DMP system. The accuracy measurement is shown in figure \ref{fig:accuracy}.
+To eventuate this experiment, we performed it many times for various angle of inclination by keeping the arms at different-different height as shown in figure \ref{fig:inclination}. During the experiment, we monitored the trajectory generated by DMP system. The accuracy measurement is shown in figure \ref{fig:accuracy}.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{accuracy}
@@ -245,9 +237,11 @@ To eventuate this experiment, we performed it many times for various postures by
 \end{figure}
 
 \subsection{Failure detection using end-effector forces}
-The clothing task has to deal with complex dynamics including manipulation of clothing article. The clothes are non-rigid, flexible and highly deformable objects, making the task more difficult to perform. During the clothing task, we observed the forces being applied at both the end-effector of Baxter robot. The trajectories were monitored and categorized into two \textit{success} and \textit{failure}. The mean of these two category is calculated and plotted as shown in figure \ref{fig:position_force}.
+This experiment is designed to deal with failure cases. There can be many failure cases during the clothing task, such as the clothing article gets stuck into the fingers. In this experiment, we are using forces being applied on the end-effector of Baxter robot to detect the failure scenario. Appropriate action can be taken once the failure is detected.
 
-It is clearly visible from the figure \ref{fig:position_force} that the applied forces are very different in nature in both the cases. Both of these applied forces are increasing from the beginning however the applied forces in case of \textit{failure} are much more higher than that of \textit{success}. Hence one can easily differentiate and detect the failure by using this information.
+The clothing task has to deal with complex dynamics including manipulation of clothing article. The clothes are non-rigid, flexible and highly deformable objects, making the task more difficult to perform. During the clothing task, we observed the forces being applied at both the end-effector of Baxter robot. The trajectories were monitored and categorized into two \textit{success} and \textit{failure}. The mean of these two category is calculated and plotted as shown in figure \ref{fig:position_force}. This is the average profile over several success and failure trajectories for different postures of the mannequin.
+
+It is clearly visible from the figure \ref{fig:position_force} that the applied forces are very different in nature in both the cases. Both of these forces are increasing from the beginning however forces in case of \textit{failure} are much more higher than that of \textit{success}. Hence one can easily differentiate and detect the failure by using this information.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{position_force}

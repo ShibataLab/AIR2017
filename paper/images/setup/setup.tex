@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0,0) {\includegraphics[width=\linewidth]{setup_img}};
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\iffalse
+		% Next four lines helps to locate the point needed by forming a grid
+		\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+		\draw[help lines,xstep=.05,ystep=.05] (0,0) grid (1,1);
+		\foreach \x in {0,1,...,9} {\node[anchor=north] at (\x/10,0) {0.\x}; }
+		\foreach \y in {0,1,...,9} {\node[anchor=east] at (0,\y/10) {0.\y};}
+		\fi
+		\begin{scope}[x={(image.south east)},y={(image.north west)}]
+			\draw (0.110,0.940) node[font=\scriptsize] {Kinect};
+			\draw (0.120,0.440) node[font=\scriptsize] {Baxter Robot};
+			\draw (0.905,0.640) node[font=\scriptsize] {Mannequin};
+			\draw (0.705,0.880) node[font=\scriptsize] {Clothing Article};
+		\end{scope}
+	\end{scope}
+\end{tikzpicture}
+\end{document}

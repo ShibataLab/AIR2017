@@ -38,33 +38,33 @@
 \def \scaling {3.5cm}
 \begin{document}
 
-\begin{tikzpicture}[every node/.style={transform shape}, thick, >=latex, node distance=1cm]
+\begin{tikzpicture}[every node/.style={transform shape}, thick, >=latex, node distance=0.5cm]
 	\node[basic box = blue, header = Teaching Phase] (teaching) {
-		\includegraphics[width=\scaling]{teaching}%\\
+		\includegraphics[height=\scaling]{teaching}%\\
 		%A demonstration is performed by moving the \\
 		%Baxter arms in the appropriate trajectory
 	};
-			
+				
 	%\node[north right = of teaching, basic box = orange, header = Trajectory Parameterization] (dmp)
 	\node[north right = of teaching, basic box = orange, header = Learn Trajectory] (dmp) {
 		%Baxter Left Arm Trajectory\\
-		\includegraphics[width=\scaling]{dmp}%\\
+		\includegraphics[height=\scaling]{dmp_init}%\\
 		%Recorded trajectory is parameterized by DMP
 	};
-				
-	\node[east below = of teaching, basic box = green, header = Testing Phase] (testing) {
+					
+	\node[north right = of dmp, basic box = green, header = Testing Phase] (testing) {
 		%Modified Posture\\
-		\includegraphics[width=\scaling]{testing}%\\
+		\includegraphics[height=\scaling]{testing}%\\
 		%DMP can accomodate new posture
 	};
-			
+				
 	\node[north right = of testing, basic box = red, header = DMP Generalization] (generalization){
 		%DMP Trajectory\\
-		\includegraphics[width=\scaling]{dmp_new}
+		\includegraphics[height=\scaling]{dmp_mod}
 	};
-			
-	\path[ultra thick, blue, ->](teaching) edge[->] (dmp);
-	\path[ultra thick, orange, ->](dmp) edge[->] (testing);
+				
+	\path[ultra thick, blue,  ->](teaching) edge[->] (dmp);
+	\path[ultra thick, orange,->](dmp) edge[->] (testing);
 	\path[ultra thick, green, ->](testing) edge[->] (generalization);
 \end{tikzpicture}
 \end{document}
