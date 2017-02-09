@@ -1,17 +1,12 @@
 \documentclass{standalone}
 \usepackage{graphicx}
 \usepackage{tikz}
-
-\usetikzlibrary{shapes.geometric, arrows}
-
-\tikzset{
-    box/.style    = {draw, rectangle, rounded corners, minimum height=0.7cm, text centered, draw=black, fill=white,font=\large\sffamily}
-}
+\usetikzlibrary{shapes.geometric}
 
 
 \begin{document}
 \begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0,0) {\includegraphics[width=\linewidth]{setup_img}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0,0) {\includegraphics[width=\linewidth]{2}};
 	\begin{scope}[x={(image.south east)},y={(image.north west)}]
 		\iffalse
 		% Next four lines helps to locate the point needed by forming a grid
@@ -21,10 +16,7 @@
 		\foreach \y in {0,1,...,9} {\node[anchor=east] at (0,\y/10) {0.\y};}
 		\fi
 		\begin{scope}[x={(image.south east)},y={(image.north west)}]
-			\draw (0.110,0.940) node[box, text width=1.6cm] {Kinect};
-			\draw (0.115,0.435) node[box, text width=2.0cm] {Baxter Robot};
-			\draw (0.905,0.640) node[box, text width=2.0cm] {Mannequin};
-			\draw (0.705,0.880) node[box, text width=2.1cm] {Clothing Article};
+			\draw (0.48,0.2) node[ellipse, ultra thick, draw=red,minimum height=80pt,minimum width=150pt] {};
 		\end{scope}
 	\end{scope}
 \end{tikzpicture}

@@ -3,12 +3,11 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
 
-\newcommand*{\BoxWidth}{4cm}%
 \tikzset{
-    to/.style     = {->},
-    line/.style   = {line width=0.4mm, draw=blue},
-    darrow/.style = {<->, line width=0.4mm, draw=blue},
-    box/.style    = {draw, rectangle, minimum height = 1cm, minimum width = \BoxWidth, text centered, text width=\BoxWidth, ultra thin, draw=black, fill=blue!10, font=\large}
+    to/.style     = {->, line width=0.4mm},
+    line/.style   = {line width=0.6mm, draw=blue},
+    darrow/.style = {<-, line width=0.6mm, draw=blue},
+    box/.style    = {draw, rectangle, rounded corners, minimum height = 3cm, text centered, text width=5cm, fill=white, font=\Huge\sffamily}
 }
 
 \pgfmathsetmacro{\ex}{0.85}
@@ -29,7 +28,7 @@
 			\draw[line] (0.30,0.60) -- (\ex,\ey);
 			\draw[line] (0.20,0.25) -- (\ex,\ey);
 			\draw[darrow](\ex,\ey) ++(-152:.2) arc (-152:-180:.2);
-			\draw[to](0.40,0.65) node[box]{Angle of inclination} to [out=-90,in=200] (0.65,0.55);
+			\draw[to](0.22,0.65) node[box]{Angle of Inclination} to [out=-40,in=200] (0.65,0.55);
 		\end{scope}
 	\end{scope}
 \end{tikzpicture}
