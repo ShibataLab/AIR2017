@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage[cmex10]{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=0.75in]{geometry}
+
+\begin{document}
+\begin{table}[t]
+\begin{tabular}{ |c|p{9cm}|p{5cm}| }
+\hline
+\textbf{Reviewer} & \textbf{Comment}& \textbf{Response} \\ \hline\hline
+\multirow{4}{*}{1}& Please explain the terms of equations 1 and 2 clearly. If you open the brackets of equation 1 then Kg and -Kg will cancel? This means that goal position does not have any effect? The damping term is scaled by the scaling term. Is it a variable variable K and D case? If equation 1 is for a dynamical system defined by F=Mass X accn then mass given by the scaling term cannot be a variable (must be a constant). & \textit{More description added.}  \\ \cline{2-3}
+& AS only three coordinates (x,y,z) of the wrist are considered does the wrist roll,pitch and yaw have no part in the orientation of the griper for holding the cloth?& \textit{Orientation of the end-effector is not considered as a part of DMP system and
+kept same as it was at the time of ``Teaching Phase''. This description has been added.}  \\ \cline{2-3}
+& Angle of inclination is defined in 2D and not as a 3D angle, is it sufficient? & \textit{More description added.}  \\ \cline{2-3}
+& Why is the trajectory in Fig 4 not smooth? I would imagine that human trajectories would be smooth?& \textit{Disagree. Human demonstrations need not be smooth especially when the task setting is complicated. Hence no changes has been done.} \\ \hline
+\multirow{7}{*}{2}& The contribution of the paper need to be stated more explicitly & \textbf{NEED HELP}  \\ \cline{2-3}
+& In Eqn(1), K was considered as spring constant. However, the same constant is used as coefficient for non- linear function. Need to clarify this& \textbf{NEED HELP}  \\ \cline{2-3}
+& Para next to Equ 5 is not clear "In other words, we want to setup a system which can follow specified path. The forcing term can be redefined as:"& \textit{Sentence rephrased.}  \\ \cline{2-3}
+& Modified DMP has not been discussed anywhere in the paper except in figure 3.  & \textit{More description added.}  \\ \cline{2-3}
+& The flow in figure 3 is misleading. Is it correct to have DMP generalization after Testing Phase?  & \textit{Testing and DMP generalization are swapped.}  \\ \cline{2-3}
+& In 4.1, it was mentioned as "At this point, we use Kinect Sensor to get 3D coordinates of wrist and shoulder of mannequin." how it could be possible without using any markers to recognize wrist and shoulder of mannequin. & \textit{More description added.}  \\ \cline{2-3}
+& In figure 4, it would have been meaningful if the reference coordinate frame is shown.& \textit{Reference frame added.}  \\ \hline
+\multirow{3}{*}{3}& End-effector forces may be shown through a diagram or through some description.& \textit{Description added.}  \\ \cline{2-3}
+& Figure 5 is referred before figure 4. Please make the necessary changes, if required. & \textit{Fixed.}  \\ \cline{2-3}
+& Figure 4 and 7 needs more clarity on the significance of the plots. Little description can be added in the captions itself. & \textit{Description added.}  \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+\section*{Other comments such as Typos}
+\begin{itemize}
+\item ``DMP can learn complex task from the demonstration [7, 8, 16] and thus reduce the manual efforts to design a controller from scratch or to fine-tune various
+controller parameters. We choose dual arm Baxter robot in this research as'' Repeated twice.
+\item[] \textit{Fixed.}
+
+\item Equ (6) has double negative
+\item[] \textit{Fixed.}
+
+\item Section 5, line 5 typo 'perform'
+\item[] \textit{Fixed.}
+
+\item Formatting need to be checked
+\item[] \textit{We are following Latex Template.}
+\end{itemize}
+\end{document}

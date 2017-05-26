@@ -27,7 +27,7 @@ ax = fig.gca(projection='3d')
 #         org_tra[:, poselinear_left_z], label='Original', c='b', lw=1)
 ax.plot( org_dmp[:, poselinear_left_x], 
          org_dmp[:, poselinear_left_y], 
-         org_dmp[:, poselinear_left_z], label='DMP', c='g')
+         org_dmp[:, poselinear_left_z], label='Initial DMP', c='g')
 ax.plot( mod_dmp[:, poselinear_left_x], 
          mod_dmp[:, poselinear_left_y], 
          mod_dmp[:, poselinear_left_z], label='Modified DMP', c='r')

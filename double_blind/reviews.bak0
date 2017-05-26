@@ -1,0 +1,67 @@
+% Reviews.tex: Reviews to round 2
+
+% Date: 2017/03/16
+
+% Author: Nishanth Koganti
+
+
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage[cmex10]{amsmath}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=0.75in]{geometry}
+
+\begin{document}
+
+\begin{table}[]
+\centering
+\begin{tabular}{ |c|p{7cm}|p{7cm}| }
+%\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Reviewer} & \textbf{Comment} & \textbf{Response} \\ \hline
+1        & Please explain the terms of equations 1 and 2 clearly. If you open the brackets of equation 1 then Kg and -Kg will cancel? This means that goal position does not have any effect? The damping term is scaled by the scaling term. Is it a variable variable K and D case? If equation 1 is for a dynamical system defined by F=Mass X accn then mass given by the scaling term cannot be a variable (must be a constant).       & r        \\ \hline
+1        & AS only three coordinates (x,y,z) of the wrist are considered does the wrist roll,pitch and yaw have no part in the orientation of the griper for holding the cloth?       & r        \\ \hline
+1        & Angle of inclination is defined in 2D and not as a 3D angle, is it sufficient?       & r        \\ \hline
+1        & Why is the trajectory in Fig 4 not smooth? I would imagine that human trajectories would be smooth?       & r        \\ \hline
+2        & The contribution of the paper need to be stated more explicitly       & r        \\ \hline
+2        & In Eqn(1), K was considered as spring constant. However, the same constant is used as coefficient for non- linear function. Need to clarify this       & r        \\ \hline
+2        & Para next to Equ 5 is not clear "In other words, we want to setup a system which can follow specified path. The forcing term can be redefined as:"       & r        \\ \hline
+2        & Modified DMP has not been discussed anywhere in the paper except in figure 3.       & r        \\ \hline
+2        & The flow in figure 3 is misleading. Is it correct to have DMP generalization after Testing Phase?       & r        \\ \hline
+2        & In 4.1, it was mentioned as "At this point, we use Kinect Sensor to get 3D coordinates of wrist and shoulder of mannequin." how it could be possible without using any markers to recognize wrist and shoulder of mannequin.       & r        \\ \hline
+2        & In figure 4, it would have been meaningful if the reference coordinate frame is shown.       & r        \\ \hline
+3        & End-effector forces may be shown through a diagram or through some description.       & r        \\ \hline
+3        & Figure 5 is referred before figure 4. Please make the necessary changes, if required.       & r        \\ \hline
+3        & Figure 4 and 7 needs more clarity on the significance of the plots. Little description can be added in the captions itself.       & r        \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\section*{Other Changes to paper}
+
+
+
+\begin{itemize}
+
+\item There was a typo in Eqn. 11. Used w instead of alpha. Fixed the equation.
+
+\item There was no acknowledgement section earlier. Included it now.
+
+\item emph wasn't used for all et al. expressions. Included it now.
+
+\item Change affiliation for Shibata Sensei from NAIST.
+
+\item Reduce size of related works section.
+
+\item Decrease size of T-shirts image.
+
+\end{itemize}
+
+
+
+\end{document}

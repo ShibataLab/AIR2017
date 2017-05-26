@@ -53,20 +53,20 @@
 		\includegraphics[height=\scaling]{dmp_init}%\\
 		%Recorded trajectory is parameterized by DMP
 	};
-					
-	\node[north right = of dmp, basic box = green, header = Testing Phase] (testing) {
+
+	\node[north right = of dmp, basic box = red, header = DMP Generalization] (generalization){
+		%DMP Trajectory\\
+		\includegraphics[height=\scaling]{dmp_mod}
+	};
+
+	\node[north right = of generalization, basic box = green, header = Testing Phase] (testing) {
 		%Modified Posture\\
 		\includegraphics[height=\scaling]{testing}%\\
 		%DMP can accomodate new posture
 	};
-				
-	\node[north right = of testing, basic box = red, header = DMP Generalization] (generalization){
-		%DMP Trajectory\\
-		\includegraphics[height=\scaling]{dmp_mod}
-	};
-				
+
 	\path[ultra thick, blue,  ->](teaching) edge[->] (dmp);
-	\path[ultra thick, orange,->](dmp) edge[->] (testing);
-	\path[ultra thick, green, ->](testing) edge[->] (generalization);
+	\path[ultra thick, orange,->](dmp) edge[->] (generalization);
+	\path[ultra thick, green, ->](generalization) edge[->] (testing);
 \end{tikzpicture}
 \end{document}
