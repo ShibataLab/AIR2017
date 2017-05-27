@@ -42,17 +42,17 @@ Primitives}
 %\email{anonymous_author_3@email.com}
 
 \author{Ravi P. Joshi}
-\authornote{Ravi P. Joshi is with Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Fukuoka, Japan}
+\authornote{Ravi P. Joshi is with Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Kitakyushu, Japan}
 \affiliation{}
 \email{joshi-ravi-prakash@edu.brain.kyutech.ac.jp}
 
 \author{Nishanth Koganti}
-\authornote{Nishanth Koganti is with Graduate School of Information Science, Nara Institute of Science and Technology, Nara, Japan and Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Fukuoka, Japan}
+\authornote{Nishanth Koganti is with Graduate School of Information Science, Nara Institute of Science and Technology, Nara, Japan and Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Kitakyushu, Japan}
 \affiliation{}
 \email{nishanth-k@is.naist.jp}
 
 \author{Tomohiro Shibata}
-\authornote{Tomohiro Shibata is with Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Fukuoka, Japan}
+\authornote{Tomohiro Shibata is with Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Kitakyushu, Japan}
 \affiliation{}
 \email{tom@brain.kyutech.ac.jp}
 
@@ -97,7 +97,7 @@ Primitives}
 \label{sec:introduction}
 Due to the demographic trend in developed countries, robotic assistance in the field of elderly care in home environment is growing \cite{broekens2009assistive}. Although there has been a significant number of research done in this field, robotic clothing assistance is yet an open field for research. It is one of the basic and essential assistance activities in daily life of elderly as well as disabled people. While rigid object manipulation with robots has mainly relied on precise robot control, deformable objects rather require complex control scheme. Clothing assistance is a challenging problem since robot is required to manage two difficulties: (a) robot must do cooperative manipulation by holding clothing article using both the arms while interacting with non-rigid and highly deformable clothing article and (b) maintain safe human-robot interaction with the assisted person whose posture can vary during assistance.
 
-Trajectory variability for clothing assistance is large for different environmental conditions. We need to parametrize the task efficiently so that generalization can be acheived quickly. In this study, we are investigating the applicability of using Dynamic Movement Primitives (DMP) as a task parameterization model for performing clothing assistance task. Robotic cloth manipulation task deals with putting a clothing article on both the arms. The idea of using DMP is inspired by the fact that DMP can learn complex task from the demonstration \cite{ijspeert2003learning, schaal2006dynamic, ijspeert2013dynamical} and thus reduce the manual efforts to design a controller from scratch or to fine-tune various controller parameters. We choose dual arm Baxter robot in this research as it is safe and flexible by design \cite{fitzgerald2013developing}. 
+Trajectory variability for clothing assistance is large for different environmental conditions. We need to parametrize the task efficiently so that generalization can be acheived quickly. In this study, we are investigating the applicability of using Dynamic Movement Primitives (DMP) as a task parameterization model for performing clothing assistance task. Robotic cloth manipulation task deals with putting a clothing article on both the arms. The idea of using DMP is inspired by the fact that DMP can learn complex task from the demonstration \cite{ijspeert2003learning, schaal2006dynamic, ijspeert2013dynamical} and thus reduce the manual efforts to design a controller from scratch or to fine-tune various controller parameters. We choose dual arm Baxter robot (Rethink robotics) in this research as it is safe and flexible by design \cite{fitzgerald2013developing}. 
 
 Rest of the paper is organized as follows. Section \ref{sec:related_works}, gives brief overview of related literature in this field. In Section \ref{sec:method}, we introduce mathematical formulation about DMP followed by describing proposed method and its workflow. Section \ref{sec:experiments} deals with details of various experiments performed and corresponding results. The discussion about experiments is presented in section \ref{sec:discussion}. Finally we conclude in section \ref{sec:conclusions} with future directions.
 
