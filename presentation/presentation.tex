@@ -21,18 +21,14 @@
 \renewcommand*{\bibfont}{\tiny}%font size for reference slide
 \addbibresource{bibfile.bib}
 
-
-%\setbeamerfont{author}{size=\footcitesize}
-%\setbeamerfont{institute}{size=\tiny}
 \setbeamertemplate{navigation symbols}{}
 \renewcommand{\footnotesize}{\tiny}
 
 \title[AIR 2017]{Robotic cloth manipulation for clothing assistance task using Dynamic Movement Primitives}
 \author[Ravi P. Joshi]{Ravi P. Joshi$^a$, Nishanth Koganti$^{a,b}$, and Tomohiro Shibata$^a$}
-\institute[]{\tiny{$^a$ Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Kitakyushu, Japan\\$^b$ Graduate School of Information Science, Nara Institute of Science and Technology, Nara, Japan}}
+\institute[]{\tiny{$^a$Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Kitakyushu, Japan\\$^b$Graduate School of Information Science, Nara Institute of Science and Technology, Nara, Japan}}
 
-\date[]{{June 28, 2017}}
-%\date[]{}
+\date[]{{June 29, 2017}}
 
 % all the graphics are placed inside images folder
 \graphicspath{{./images/}}
@@ -76,11 +72,11 @@
 
 \begin{document}
 {
-  \usebackgroundtemplate{\includegraphics[width=\paperwidth]{background.pdf}}
-  \setbeamertemplate{footline}{} 
-  \begin{frame}
-    \titlepage
-  \end{frame}
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{background}}
+	\setbeamertemplate{footline}{} 
+	\begin{frame}
+		\titlepage
+	\end{frame}
 }
 \addtocounter{framenumber}{-1}
 
@@ -94,13 +90,23 @@
 
 \section{Introduction}
 \begin{frame}{Introduction}
-	\linespread{1.6}
-		
-	\begin{itemize}
-		\item Clothing assistance is a basic and important assistance activity in the daily life of the elderly and disabled people
-		\item Need of robotic clothing assistance is growing
-	\end{itemize}
-		
+	\linespread{1.5}
+	\begin{columns}[t]
+		\begin{column}{0.65\textwidth}
+			\begin{itemize}
+				\item Clothing assistance is a basic and important assistance activity in the daily life of the elderly and disabled people
+				\item Need of robotic clothing assistance is growing
+			\end{itemize}
+		\end{column}
+						
+		\begin{column}{0.35\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.8\textwidth]{robotic_clothing_assistance}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+	
 	\vskip 1em
 	\begin{block}{Major challenges involved}
 		\begin{itemize}
@@ -113,7 +119,7 @@
 
 \section{Related Works}
 \begin{frame}{Related Works}
-		
+			
 	\vskip -1em
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
@@ -122,7 +128,7 @@
 				\begin{itemize}
 					\item[\color{green}{\checkmark}] Used Hidden Markov Model for tracking
 					\item[\color{green}{\checkmark}] Triangulated mesh model for simulating clothing article
-					\item[\color{red}{$\times$}] Simple manipulations such as gripping using one arm only
+					\item[\color{red}{$\times$}] Highly depends on simulated contour information.
 				\end{itemize}
 			}
 			\vskip 0.5em
@@ -130,7 +136,7 @@
 				\includegraphics[height=2.5cm]{towner_2011}
 			}
 		\end{column}
-				
+						
 		\begin{column}{0.5\textwidth}
 			Tamei \textit{et al.}\footnotemark, ~Clothing assistance with dual-arm robot
 			{\scriptsize
@@ -147,7 +153,7 @@
 			}
 		\end{column}
 	\end{columns}
-		
+			
 	\addtocounter{footnote}{-1}
 	\footcitetext{cusumano2011bringing}
 	\stepcounter{footnote}
@@ -157,24 +163,24 @@
 \section{Dynamic Movement Primitives}
 \begin{frame}{Dynamic Movement Primitives (DMP)}
 	%\linespread{1.2}
-		
+			
 	\begin{exampleblock}{DMP in a nutshell}
 		\begin{itemize}
 			\item It is used for generating a control signal to guide the real system\footnotemark
 			\item It can represent \textit{nonlinear} motion with a set of differential equations
 		\end{itemize}
 	\end{exampleblock}
-		
-		
+			
+			
 	%	We start with point attractor dynamics\footcite{ijspeert2002movement} \hskip1em $\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})$
-		
+			
 	%	\vskip -1em
 	%	\begin{equation}
 	%		\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})
 	%		\label{eq:attractor}
 	%	\end{equation}
 	%	\vskip -0.5em
-		
+			
 	%	\vskip 1em
 	%	Now add a forcing term $f$ on eq(\ref{eq:attractor}) that will let us to modify this trajectory
 	The system is defined as
@@ -194,11 +200,11 @@
 			\item $f$ is nonlinear function defined over time
 		\end{itemize}
 	}
-		
+			
 	\begin{exampleblock}{}
 		$f$ is a function of \textit{canonical system}, denoted by $x$ as $\dot{x} = -\alpha_x x$
 	\end{exampleblock}
-		
+			
 	\footcitetext{schaal2006dynamic}
 \end{frame}
 
@@ -209,14 +215,14 @@
 		f(x,g) = \frac{\Sigma_{i=1}^N \psi_i w_i}{\Sigma_{i=1}^N \psi_i} x(g - y_0)
 		\label{eq:cs_with_f}
 	\end{equation}
-		
+			
 	where:
 	\begin{itemize}
 		\item $y_0$ is the initial state of the system
 		\item $w_i$ is a weighting for a given basis function $\psi_i$
 		\item $\psi_i = \textrm{exp}\left( -h_i \left( x - c_i\right)^2 \right)$ is Gaussian with mean $c_i$ and variance $h_i$
 	\end{itemize}
-		
+			
 	\vskip -1em
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -226,7 +232,7 @@
 				\caption{$\psi$ Activation}
 			\end{figure}
 		\end{column}
-				
+						
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[height=2.1cm]{weighted_summation}
@@ -274,7 +280,7 @@
 \begin{frame}{Workflow of \textit{Robotic cloth manipulation} task}
 	\vskip -0.5em
 	\begin{figure}
-		\includegraphics[width=0.85\textwidth]{flowchart_beamer_hd}
+		\includegraphics[width=0.9\textwidth]{flowchart_beamer}
 	\end{figure}
 \end{frame}
 
@@ -293,7 +299,7 @@
 				\caption{Old \& modified posture of mannequin}
 			\end{figure}
 		\end{column}
-				
+						
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[width=\textwidth]{trajectory}
@@ -301,7 +307,7 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
-		
+			
 	\vskip 1em
 	\centering{
 		\href{run:./videos/video.mp4}{\beamerbutton{Video demonstration}}
@@ -311,23 +317,31 @@
 \section{Conclusion and Discussion}
 \begin{frame}{Conclusion and Discussion}
 	\linespread{1.5}
-		
+	
 	\begin{itemize}
+		\item Baxter APIs\footcite{fitzgerald2013developing} are used to get the end-effector forces. Raw forces are found noisy in nature.
 		\item Result shows that DMPs are able to generalize the movement trajectory
-		\item The converted trajectory from Cartesian Space to Joint Space was not smooth in some regions
-		      \begin{itemize}
-		      	\item It was calculated using \textsc{Trac\_IK}\footcite{beeson2015trac}
-		      \end{itemize}
-		\item Also real-time tracking of mannequin is required
+		\item Proposed failure detection method by using force information can detect failures
+		\item DMP should incorporate orientation information as well
 	\end{itemize}
 \end{frame}
 
 \section{Future work}
-\begin{frame}{Tentative Research Plan}
+\begin{frame}{Future work}
+	\linespread{1.5}
 	
-	\begin{figure}
-		\includegraphics[width=\textwidth]{timeline}
-	\end{figure}
+	\begin{itemize}
+		\item Make approach more robust by using combination of visual and force information
+		\item Need for designing an adaptive controller
+		      \begin{itemize}
+		      	\item For real-time tracking of mannequin
+		      	\item To adapt various failure scenarios
+		      \end{itemize}
+	\end{itemize}
+		
+	\begin{exampleblock}{Acknowledgments}
+		This work was supported in part by the Grant-in-Aid for Scientific Research from Japan Society for the Promotion of Science (No. 16H01749).
+	\end{exampleblock}
 \end{frame}
 
 \begin{frame}[noframenumbering]{References}
