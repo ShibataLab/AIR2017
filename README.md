@@ -7,3 +7,6 @@ Paper for [Advances in Robotics (AIR)](http://www.advancesinrobotics.com/2017/) 
 
 ## Submitted camera ready paper
 * Paper [See here paper/paper.pdf](paper/paper.pdf)
+
+## Oral Presentation
+* Presentation [See here presentation/presentation.pdf](presentation/presentation.pdf)
