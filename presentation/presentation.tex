@@ -98,15 +98,15 @@
 				\item Need of robotic clothing assistance is growing
 			\end{itemize}
 		\end{column}
-						
+								
 		\begin{column}{0.35\textwidth}
 			\begin{figure}
 				\includegraphics[width=0.8\textwidth]{robotic_clothing_assistance}
 			\end{figure}
 		\end{column}
 	\end{columns}
-	
-	
+		
+		
 	\vskip 1em
 	\begin{block}{Major challenges involved}
 		\begin{itemize}
@@ -119,7 +119,7 @@
 
 \section{Related Works}
 \begin{frame}{Related Works}
-			
+				
 	\vskip -1em
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
@@ -136,7 +136,7 @@
 				\includegraphics[height=2.5cm]{towner_2011}
 			}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			Tamei \textit{et al.}\footnotemark, ~Clothing assistance with dual-arm robot
 			{\scriptsize
@@ -153,7 +153,7 @@
 			}
 		\end{column}
 	\end{columns}
-			
+				
 	\addtocounter{footnote}{-1}
 	\footcitetext{cusumano2011bringing}
 	\stepcounter{footnote}
@@ -163,24 +163,24 @@
 \section{Dynamic Movement Primitives}
 \begin{frame}{Dynamic Movement Primitives (DMP)}
 	%\linespread{1.2}
-			
+				
 	\begin{exampleblock}{DMP in a nutshell}
 		\begin{itemize}
 			\item It is used for generating a control signal to guide the real system\footnotemark
 			\item It can represent \textit{nonlinear} motion with a set of differential equations
 		\end{itemize}
 	\end{exampleblock}
-			
-			
+				
+				
 	%	We start with point attractor dynamics\footcite{ijspeert2002movement} \hskip1em $\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})$
-			
+				
 	%	\vskip -1em
 	%	\begin{equation}
 	%		\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})
 	%		\label{eq:attractor}
 	%	\end{equation}
 	%	\vskip -0.5em
-			
+				
 	%	\vskip 1em
 	%	Now add a forcing term $f$ on eq(\ref{eq:attractor}) that will let us to modify this trajectory
 	The system is defined as
@@ -200,11 +200,11 @@
 			\item $f$ is nonlinear function defined over time
 		\end{itemize}
 	}
-			
+				
 	\begin{exampleblock}{}
 		$f$ is a function of \textit{canonical system}, denoted by $x$ as $\dot{x} = -\alpha_x x$
 	\end{exampleblock}
-			
+				
 	\footcitetext{schaal2006dynamic}
 \end{frame}
 
@@ -215,14 +215,14 @@
 		f(x,g) = \frac{\Sigma_{i=1}^N \psi_i w_i}{\Sigma_{i=1}^N \psi_i} x(g - y_0)
 		\label{eq:cs_with_f}
 	\end{equation}
-			
+				
 	where:
 	\begin{itemize}
 		\item $y_0$ is the initial state of the system
 		\item $w_i$ is a weighting for a given basis function $\psi_i$
 		\item $\psi_i = \textrm{exp}\left( -h_i \left( x - c_i\right)^2 \right)$ is Gaussian with mean $c_i$ and variance $h_i$
 	\end{itemize}
-			
+				
 	\vskip -1em
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -232,7 +232,7 @@
 				\caption{$\psi$ Activation}
 			\end{figure}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[height=2.1cm]{weighted_summation}
@@ -290,8 +290,8 @@
 	\end{figure}
 \end{frame}
 
-\section{Results}
-\begin{frame}{Results}
+\section{Experiments and results}
+\begin{frame}{Experiments and results}
 	\begin{columns}[b]
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
@@ -299,7 +299,7 @@
 				\caption{Old \& modified posture of mannequin}
 			\end{figure}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[width=\textwidth]{trajectory}
@@ -307,17 +307,62 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
-			
+				
 	\vskip 1em
 	\centering{
 		\href{run:./videos/video.mp4}{\beamerbutton{Video demonstration}}
 	}
 \end{frame}
 
+\begin{frame}{Accuracy measurement}
+	Angle of Inclination measures the bending of arms w.r.t. horizontal line in two-dimensional space
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{inclination_plus}
+				%\caption{Angle of Inclination measures the bending of arms w.r.t. horizontal line in two-dimensional space}
+			\end{figure}
+		\end{column}
+								
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{success_rate}
+				%\caption{Left arm trajectories of Baxter Robot}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Failure detection using end-effector forces}
+	\begin{exampleblock}{Procedure}
+		\begin{enumerate}
+			\item Each trajectory is computed by calculating the mean. 
+			\item The force value is norm of force applied in all three Cartesian directions.
+		\end{enumerate}
+	\end{exampleblock}
+	
+	\vskip -1em
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.8\textwidth]{failure_scenario_2}
+				\caption{A failure scenario}
+			\end{figure}
+		\end{column}
+								
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.9\textwidth]{position_force}
+				\caption{Forces acting on left arm of Baxter}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \section{Conclusion and Discussion}
 \begin{frame}{Conclusion and Discussion}
 	\linespread{1.5}
-	
+		
 	\begin{itemize}
 		\item Baxter APIs\footcite{fitzgerald2013developing} are used to get the end-effector forces. Raw forces are found noisy in nature.
 		\item Result shows that DMPs are able to generalize the movement trajectory
@@ -329,7 +374,7 @@
 \section{Future work}
 \begin{frame}{Future work}
 	\linespread{1.5}
-	
+		
 	\begin{itemize}
 		\item Make approach more robust by using combination of visual and force information
 		\item Need for designing an adaptive controller
@@ -338,7 +383,7 @@
 		      	\item To adapt various failure scenarios
 		      \end{itemize}
 	\end{itemize}
-		
+			
 	\begin{exampleblock}{Acknowledgments}
 		This work was supported in part by the Grant-in-Aid for Scientific Research from Japan Society for the Promotion of Science (No. 16H01749).
 	\end{exampleblock}
