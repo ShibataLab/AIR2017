@@ -49,7 +49,7 @@
       \else%
         \vskip0.1em%
         {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-      \fi%     
+      \fi%
     \end{beamercolorbox}%
     \vskip0em\par
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
@@ -73,7 +73,7 @@
 \begin{document}
 {
 	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{background}}
-	\setbeamertemplate{footline}{} 
+	\setbeamertemplate{footline}{}
 	\begin{frame}
 		\titlepage
 	\end{frame}
@@ -98,37 +98,40 @@
 				\item Need of robotic clothing assistance is growing
 			\end{itemize}
 		\end{column}
-								
+
 		\begin{column}{0.35\textwidth}
 			\begin{figure}
 				\includegraphics[width=0.8\textwidth]{robotic_clothing_assistance}
 			\end{figure}
 		\end{column}
 	\end{columns}
-		
-		
+
+
 	\vskip 1em
 	\begin{block}{Major challenges involved}
 		\begin{itemize}
 			\item Close interaction of the robot with non-rigid clothing article
 			\item Safe human-robot interaction
-			\item Accurate estimation of human-cloth relationship
+			\item Estimation of human-cloth relationship
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 \section{Related Works}
 \begin{frame}{Related Works}
-				
-	\vskip -1em
+
+	%\vskip -1em
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
-			Towner \textit{et al.}\footnotemark, ~Identifying and manipulating clothing article by dual-arm robot
+			Towner \textit{et al.}\footnotemark, ~Manipulating clothing article by dual-arm robot
 			{\scriptsize
 				\begin{itemize}
-					\item[\color{green}{\checkmark}] Used Hidden Markov Model for tracking
-					\item[\color{green}{\checkmark}] Triangulated mesh model for simulating clothing article
-					\item[\color{red}{$\times$}] Highly depends on simulated contour information.
+					%\item[\color{green}{\checkmark}] Used Hidden Markov Model for tracking
+					%\item[\color{green}{\checkmark}] Triangulated mesh model for simulating clothing article
+					%\item[\color{red}{$\times$}] Highly depends on simulated contour information.
+					\item Used Hidden Markov Model for tracking
+					\item Triangulated mesh model for simulating clothing article
+					\item Highly depends on simulated contour information.
 				\end{itemize}
 			}
 			\vskip 0.5em
@@ -136,15 +139,17 @@
 				\includegraphics[height=2.5cm]{towner_2011}
 			}
 		\end{column}
-								
+
 		\begin{column}{0.5\textwidth}
 			Tamei \textit{et al.}\footnotemark, ~Clothing assistance with dual-arm robot
 			{\scriptsize
 				\begin{itemize}
-					\item[\color{green}{\checkmark}] Used Reinforcement
-					      learning (RL)
-					\item[\color{green}{\checkmark}] Topology coordinates for human and cloth extremities relationship
-					\item[\color{red}{$\times$}] Limited generalization capability for new postures
+					%\item[\color{green}{\checkmark}] Used Reinforcement learning (RL)
+					%\item[\color{green}{\checkmark}] Topology coordinates for human and cloth extremities relationship
+					%\item[\color{red}{$\times$}] Limited generalization capability for new postures
+					\item Used Reinforcement learning (RL)
+					\item Topology coordinates for human and cloth extremities relationship
+					\item Via-point trajectory with minimum jerk criterion
 				\end{itemize}
 			}
 			\vskip 0.5em
@@ -153,7 +158,7 @@
 			}
 		\end{column}
 	\end{columns}
-				
+
 	\addtocounter{footnote}{-1}
 	\footcitetext{cusumano2011bringing}
 	\stepcounter{footnote}
@@ -163,32 +168,32 @@
 \section{Dynamic Movement Primitives}
 \begin{frame}{Dynamic Movement Primitives (DMP)}
 	%\linespread{1.2}
-				
+
 	\begin{exampleblock}{DMP in a nutshell}
 		\begin{itemize}
 			\item It is used for generating a control signal to guide the real system\footnotemark
 			\item It can represent \textit{nonlinear} motion with a set of differential equations
 		\end{itemize}
 	\end{exampleblock}
-				
-				
+
+
 	%	We start with point attractor dynamics\footcite{ijspeert2002movement} \hskip1em $\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})$
-				
+
 	%	\vskip -1em
 	%	\begin{equation}
 	%		\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})
 	%		\label{eq:attractor}
 	%	\end{equation}
 	%	\vskip -0.5em
-				
+
 	%	\vskip 1em
 	%	Now add a forcing term $f$ on eq(\ref{eq:attractor}) that will let us to modify this trajectory
 	The system is defined as
 	\vskip -1em
-	\begin{equation}
+	\begin{equation*}
 		\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y}) + f
 		\label{eq:attractor_with_f}
-	\end{equation}
+	\end{equation*}
 	%\vskip -0.5em
 	{\small
 		where:
@@ -200,81 +205,125 @@
 			\item $f$ is nonlinear function defined over time
 		\end{itemize}
 	}
-				
+
 	\begin{exampleblock}{}
 		$f$ is a function of \textit{canonical system}, denoted by $x$ as $\dot{x} = -\alpha_x x$
 	\end{exampleblock}
-				
+
 	\footcitetext{schaal2006dynamic}
 \end{frame}
 
-
 \begin{frame}{Forcing function $f$}
-	$f$ is defined as
-	\begin{equation}
+$f$ is defined as
+\vskip-2.8em
+	\begin{equation*}
 		f(x,g) = \frac{\Sigma_{i=1}^N \psi_i w_i}{\Sigma_{i=1}^N \psi_i} x(g - y_0)
 		\label{eq:cs_with_f}
-	\end{equation}
-				
-	where:
+	\end{equation*}
+\vskip-0.5em
+{\small
+where:
+\vskip-0.8em
 	\begin{itemize}
+	\setlength\itemsep{0.2em}
 		\item $y_0$ is the initial state of the system
 		\item $w_i$ is a weighting for a given basis function $\psi_i$
 		\item $\psi_i = \textrm{exp}\left( -h_i \left( x - c_i\right)^2 \right)$ is Gaussian with mean $c_i$ and variance $h_i$
 	\end{itemize}
-				
-	\vskip -1em
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[height=2.1cm]{psi_activation}
-				\vskip -0.3em
-				\caption{$\psi$ Activation}
-			\end{figure}
-		\end{column}
-								
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[height=2.1cm]{weighted_summation}
-				\vskip -0.3em
-				\caption{Weighted Summation}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Imitating a desired path}
-	\linespread{1.4}
+}
+\vskip-1.2em
+\begin{exampleblock}{Imitating a desired path}
 	The desired forcing term $f$ which affects the system acceleration, is written as
-	\vskip -1.5em
-	\begin{equation}
+	\vskip-2.4em
+	\begin{equation*}
 		\textbf{f}_d = \ddot{\textbf{y}}_d - \alpha_y ( \beta_y (g - \textbf{y}) - \dot{\textbf{y}})
 		\label{eq:imitate_f}
-	\end{equation}
+	\end{equation*}
 	\vskip -0.5em
 	{\small
-		where 
+		where
 		\vskip -1em
 		\begin{itemize}
 			\item $\textbf{y}_d$ is desired trajectory, given by $\ddot{\textbf{y}}_d = \frac{\partial}{\partial t} \dot{\textbf{y}}_d = \frac{\partial}{\partial t} \frac{\partial}{\partial t} \textbf{y}_d$
 		\end{itemize}
 	}
-	\vskip-0.5em
-	\begin{exampleblock}{}
-		Choose the weights over the basis functions i.e., minimize\footnotemark
-		\vskip-2em
-		\begin{equation}
+Choose the weights over the basis functions i.e., minimize\footnotemark
+		\vskip-1em
+		\begin{equation*}
 			\Sigma_t \psi_i(t) \left[ f_d(t) - w_i \left\lbrace x(t) (g - y_0)\right\rbrace\right]^2
 			\label{eq:minize_fd}
-		\end{equation}
-	\end{exampleblock}
-	\vskip-0.5em
-	\begin{figure}
-		\includegraphics[width=0.8\textwidth]{imitate_path}
-	\end{figure}
-	\vskip-1.5em
-	\footcitetext{schaal2002scalable}
+		\end{equation*}
+\end{exampleblock}
+\vskip-1.5em
+\footcitetext{schaal2002scalable}
 \end{frame}
+
+%\begin{frame}{Forcing function $f$}
+%	$f$ is defined as
+%	\begin{equation}
+%		f(x,g) = \frac{\Sigma_{i=1}^N \psi_i w_i}{\Sigma_{i=1}^N \psi_i} x(g - y_0)
+%		\label{eq:cs_with_f}
+%	\end{equation}
+%
+%	where:
+%	\begin{itemize}
+%		\item $y_0$ is the initial state of the system
+%		\item $w_i$ is a weighting for a given basis function $\psi_i$
+%		\item $\psi_i = \textrm{exp}\left( -h_i \left( x - c_i\right)^2 \right)$ is Gaussian with mean $c_i$ and variance $h_i$
+%	\end{itemize}
+%
+%	\vskip -1em
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\includegraphics[height=2.1cm]{psi_activation}
+%				\vskip -0.3em
+%				\caption{$\psi$ Activation}
+%			\end{figure}
+%		\end{column}
+%
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\includegraphics[height=2.1cm]{weighted_summation}
+%				\vskip -0.3em
+%				\caption{Weighted Summation}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Imitating a desired path}
+%	\linespread{1.4}
+%	The desired forcing term $f$ which affects the system acceleration, is written as
+%	\vskip -1.5em
+%	\begin{equation}
+%		\textbf{f}_d = \ddot{\textbf{y}}_d - \alpha_y ( \beta_y (g - \textbf{y}) - \dot{\textbf{y}})
+%		\label{eq:imitate_f}
+%	\end{equation}
+%	\vskip -0.5em
+%	{\small
+%		where
+%		\vskip -1em
+%		\begin{itemize}
+%			\item $\textbf{y}_d$ is desired trajectory, given by $\ddot{\textbf{y}}_d = \frac{\partial}{\partial t} \dot{\textbf{y}}_d = %\frac{\partial}{\partial t} \frac{\partial}{\partial t} \textbf{y}_d$
+%		\end{itemize}
+%	}
+%	\vskip-0.5em
+%	\begin{exampleblock}{}
+%		Choose the weights over the basis functions i.e., minimize\footnotemark
+%		\vskip-2em
+%		\begin{equation}
+%			\Sigma_t \psi_i(t) \left[ f_d(t) - w_i \left\lbrace x(t) (g - y_0)\right\rbrace\right]^2
+%			\label{eq:minize_fd}
+%		\end{equation}
+%	\end{exampleblock}
+%	\vskip-0.5em
+%	\begin{figure}
+%		\includegraphics[width=0.8\textwidth]{imitate_path}
+%	\end{figure}
+%	\vskip-1.5em
+%	\footcitetext{schaal2002scalable}
+%\end{frame}
 
 \section{Setup and Experiment}
 \begin{frame}{Workflow of \textit{Robotic cloth manipulation} task}
@@ -290,27 +339,27 @@
 	\end{figure}
 \end{frame}
 
-\section{Experiments and results}
-\begin{frame}{Experiments and results}
+\section{Experiments and Results}
+\begin{frame}{Experiments and Results}
 	\begin{columns}[b]
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
-				\includegraphics[width=\textwidth]{various_posture}
+				\includegraphics[trim={4cm 0 5cm 0},clip,width=\textwidth]{various_posture}
 				\caption{Old \& modified posture of mannequin}
 			\end{figure}
 		\end{column}
-								
+
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
-				\includegraphics[width=\textwidth]{trajectory}
+				\includegraphics[width=\textwidth]{all_traj}
 				\caption{Left arm trajectories of Baxter Robot}
 			\end{figure}
 		\end{column}
 	\end{columns}
-				
+
 	\vskip 1em
 	\centering{
-		\href{run:./videos/video.mp4}{\beamerbutton{Video demonstration}}
+		\href{run:./videos/video.mp4}{\beamerbutton{Video Demonstration}}
 	}
 \end{frame}
 
@@ -323,7 +372,7 @@
 				%\caption{Angle of Inclination measures the bending of arms w.r.t. horizontal line in two-dimensional space}
 			\end{figure}
 		\end{column}
-								
+
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[width=\textwidth]{success_rate}
@@ -333,40 +382,42 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Failure detection using end-effector forces}
-	\begin{exampleblock}{Procedure}
-		\begin{enumerate}
-			\item Each trajectory is computed by calculating the mean. 
-			\item The force value is norm of force applied in all three Cartesian directions.
-		\end{enumerate}
-	\end{exampleblock}
-	
-	\vskip -1em
-	\begin{columns}[t]
-		\begin{column}{0.3\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.8\textwidth]{failure_scenario_2}
-				\caption{A failure scenario}
-			\end{figure}
-		\end{column}
-								
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=0.9\textwidth]{position_force}
-				\caption{Forces acting on left arm of Baxter}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{Failure detection using end-effector forces}
+%	\begin{exampleblock}{Procedure}
+%		\begin{enumerate}
+%			\item Each trajectory is computed by calculating the mean.
+%			\item The force value is norm of force applied in all three Cartesian directions.
+%		\end{enumerate}
+%	\end{exampleblock}
+%
+%	\vskip -1em
+%	\begin{columns}[t]
+%		\begin{column}{0.3\textwidth}
+%			\begin{figure}
+%				\includegraphics[width=0.8\textwidth]{failure_scenario_2}
+%				\caption{A failure scenario}
+%			\end{figure}
+%		\end{column}
+%
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\includegraphics[width=0.9\textwidth]{position_force}
+%				\caption{Forces acting on left arm of Baxter}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
-\section{Conclusion and Discussion}
-\begin{frame}{Conclusion and Discussion}
+\section{Discussion and Conclusion}
+\begin{frame}{Discussion and Conclusion}
 	\linespread{1.5}
-		
+
 	\begin{itemize}
-		\item Baxter APIs\footcite{fitzgerald2013developing} are used to get the end-effector forces. Raw forces are found noisy in nature.
+		%\item Baxter APIs\footcite{fitzgerald2013developing} are used to get the end-effector forces. Raw forces are found noisy in nature.
+		\item Robotic clothing assistance is challenging since it requires cooperative manipulation
+		\item Clothing article inherits non-rigid and highly deformable properties
 		\item Result shows that DMPs are able to generalize the movement trajectory
-		\item Proposed failure detection method by using force information can detect failures
+		%\item Proposed failure detection method by using force information can detect failures
 		\item DMP should incorporate orientation information as well
 	\end{itemize}
 \end{frame}
@@ -374,7 +425,7 @@
 \section{Future work}
 \begin{frame}{Future work}
 	\linespread{1.5}
-		
+
 	\begin{itemize}
 		\item Make approach more robust by using combination of visual and force information
 		\item Need for designing an adaptive controller
@@ -383,7 +434,7 @@
 		      	\item To adapt various failure scenarios
 		      \end{itemize}
 	\end{itemize}
-			
+
 	\begin{exampleblock}{Acknowledgments}
 		This work was supported in part by the Grant-in-Aid for Scientific Research from Japan Society for the Promotion of Science (No. 16H01749).
 	\end{exampleblock}
@@ -396,8 +447,6 @@
 		\printbibliography
 	\end{minipage}
 \end{frame}
-
-
 
 \begin{frame}[noframenumbering]{The End}
 	\begin{center}
