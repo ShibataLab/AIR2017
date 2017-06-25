@@ -91,7 +91,7 @@
 \section{Introduction}
 \begin{frame}{Introduction}
 	%\linespread{1.5}
-
+	
 	\vskip -2em
 	\begin{columns}[t]
 		\begin{column}{0.6\textwidth}
@@ -102,41 +102,41 @@
 				\item Clothing is one of the most suffering daily activities for elderly
 			\end{itemize}
 		\end{column}
-						
+								
 		\begin{column}{0.4\textwidth}
-\vskip -1em
+			\vskip -1em
 			\begin{figure}
 				\includegraphics[trim={4px 4px 4px 4px},clip,width=\textwidth]{japan_population}
 				\caption{Japan population growth\footnotemark}
 			\end{figure}
 		\end{column}
 	\end{columns}
-			
+				
 	\vskip -1em
 	\begin{columns}[t]
 		\begin{column}{0.7\textwidth}
-	\begin{block}{Major challenges involved}
-		\begin{itemize}
-			\item Close interaction of the robot with cloth
-			\item Safe human-robot interaction
-			\item Estimation of human-cloth relationship
-		\end{itemize}
-	\end{block}
+			\begin{block}{Major challenges involved}
+				\begin{itemize}
+					\item Close interaction of the robot with cloth
+					\item Safe human-robot interaction
+					\item Estimation of human-cloth relationship
+				\end{itemize}
+			\end{block}
 		\end{column}
-						
+								
 		\begin{column}{0.25\textwidth}
 			\begin{figure}
 				\includegraphics[width=0.7\textwidth]{robotic_clothing_assistance}
 			\end{figure}
 		\end{column}
 	\end{columns}
-
+	
 	\footcitetext{jonMcDonald2016japan}
 \end{frame}
 
 \section{Related Works}
 \begin{frame}{Related Works}
-			
+				
 	\vskip -1em
 	\begin{columns}[t]
 		\begin{column}{0.5\textwidth}
@@ -153,7 +153,7 @@
 				\includegraphics[height=2.5cm]{towner_2011}
 			}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			Tamei \textit{et al.}\footnotemark, ~Clothing assistance with dual-arm robot
 			{\scriptsize
@@ -169,7 +169,7 @@
 			}
 		\end{column}
 	\end{columns}
-			
+				
 	\addtocounter{footnote}{-1}
 	\footcitetext{cusumano2011bringing}
 	\stepcounter{footnote}
@@ -187,7 +187,7 @@
 			\item Also perform target tracking and obstacle avoidance
 		\end{itemize}
 	\end{exampleblock}
-			
+				
 	The system is defined as
 	\vskip -1em
 	\begin{equation*}
@@ -213,7 +213,7 @@
 	\begin{exampleblock}{}
 		$f$ is a function of \textit{canonical system}%, denoted by $x$ as $\dot{x} = -\alpha_x x$
 	\end{exampleblock}
-			
+				
 	\vskip -0.6em
 	\footcitetext{schaal2006dynamic}
 \end{frame}
@@ -244,7 +244,7 @@
 			\textbf{f}_d = \ddot{\textbf{y}}_d - \alpha_y ( \beta_y (g - \textbf{y}) - \dot{\textbf{y}})
 			\label{eq:imitate_f}
 		\end{equation*}
-		
+				
 		Choose the weights over the basis functions i.e., minimize\footnotemark
 		\vskip -1em
 		\begin{equation*}
@@ -257,6 +257,17 @@
 \end{frame}
 
 \begin{frame}{Example of DMP}
+	\vskip -2em
+	\begin{figure}
+		\includegraphics[trim={0 15px 0 0},clip, width=0.9\textwidth]{DMP_BFs}
+		\caption{\small{Effect of \textit{no. of basis functions}}}
+	\end{figure}
+	
+	\vskip -2em
+	\begin{figure}
+		\includegraphics[trim={0 14px 0 20px},clip, width=0.9\textwidth]{DMP_Goal}
+		\caption{\small{DMP adaptation to new goal \textit{(new goal = 1.5 * old goal)}}}
+	\end{figure}
 \end{frame}
 
 \section{Setup and Experiment}
@@ -282,7 +293,7 @@
 				\caption{Old \& modified posture of mannequin}
 			\end{figure}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[width=\textwidth]{all_traj}
@@ -290,7 +301,7 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
-			
+				
 	\vskip 1em
 	\centering{
 		\href{run:./videos/video.mp4}{\beamerbutton{Video Demonstration}}
@@ -305,7 +316,7 @@
 				\includegraphics[width=\textwidth]{inclination_plus}
 			\end{figure}
 		\end{column}
-						
+								
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[width=\textwidth]{success_rate}
@@ -317,7 +328,7 @@
 \section{Discussion and Conclusion}
 \begin{frame}{Discussion and Conclusion}
 	\linespread{1.5}
-			
+				
 	\begin{itemize}
 		\item Robotic clothing assistance is challenging since it requires cooperative manipulation
 		\item Clothing article inherits non-rigid and highly deformable properties
@@ -329,7 +340,7 @@
 \section{Future work}
 \begin{frame}{Future work}
 	\linespread{1.5}
-			
+				
 	\begin{itemize}
 		\item Make approach more robust by using combination of visual and force information
 		\item Need for designing an adaptive controller
@@ -338,7 +349,7 @@
 		      	\item To adapt various failure scenarios
 		      \end{itemize}
 	\end{itemize}
-			
+				
 	\begin{exampleblock}{Acknowledgments}
 		This work was supported in part by the Grant-in-Aid for Scientific Research from Japan Society for the Promotion of Science (No. 16H01749).
 	\end{exampleblock}
@@ -366,7 +377,7 @@
 \begin{frame}[noframenumbering,label=supplemental]
 	\frametitle{Dynamic Movement Primitives (DMP)}
 	\linespread{1.2}
-									
+										
 	\begin{exampleblock}{DMP in a nutshell}
 		\begin{itemize}
 			\item A method of trajectory control/planning\footnotemark
@@ -379,22 +390,22 @@
 			\item These equations can be adapted to generate any movement trajectory
 		\end{itemize}
 	\end{exampleblock}
-	
+		
 	\footnotetext{\tiny Schaal, Stefan. ``Dynamic movement primitives-a framework for motor control in humans and humanoid robotics." Adaptive Motion of Animals and Machines.  Springer Tokyo, 2006. 261-280.}
 \end{frame}
 
 \begin{frame}[noframenumbering]{Formulation of DMP}
 	\linespread{1.2}
-									
+										
 	\textit{DMP is for generating a control signal to guide the real system}
-									
+										
 	\begin{alertblock}{Underlying Idea\footnotemark}
 		\begin{enumerate}
 			\item Take a dynamical system with well specified stable behaviour
 			\item Add another term that makes it follow some interesting trajectory
 		\end{enumerate}
 	\end{alertblock}
-	
+		
 	\vskip 1em			
 	There are two kinds of DMP:
 	\vskip -0.5em
@@ -410,7 +421,7 @@
 				\end{figure}
 			\end{center}
 		\end{column}
-		
+				
 		\begin{column}{0.5\textwidth}
 			\begin{center}
 				\textsc{Rhythmic} DMP
@@ -423,13 +434,13 @@
 			\end{center}
 		\end{column}
 	\end{columns}
-								
+									
 	\footnotetext{\tiny Ijspeert, A. J., J. Nakanishi, and S. Schaal. ``Learning control policies for movement imitation and movement recognition." Neural information processing system. Vol. 15. 2003.}
 \end{frame}
 
 \begin{frame}[noframenumbering]{Formulation of DMP}
 	Let's start with point attractor dynamics\footnote{\tiny Ijspeert, Auke Jan, Jun Nakanishi, and Stefan Schaal. ``Movement imitation with nonlinear dynamical systems in humanoid robots." Robotics and Automation, 2002. Proceedings. ICRA'02. IEEE International Conference on. Vol. 2. IEEE, 2002.}
-	
+		
 	\vskip -1em
 	\begin{equation}
 		\ddot{y} = \alpha_y ( \beta_y (g - y) - \dot{y})
@@ -441,7 +452,7 @@
 		\item $y$ is system state and $g$ is goal state
 		\item $\alpha$ and $\beta$ are gain terms
 	\end{itemize}
-			
+				
 	\vskip 1em
 	Now add a forcing term $f$ on eq(\ref{eq:attractor}) that will let us to modify this trajectory
 	\begin{equation}
@@ -449,7 +460,7 @@
 		\label{eq:attractor_with_f}
 	\end{equation}
 	$f$ is nonlinear function defined over time.
-												
+													
 	\begin{exampleblock}{}
 		\begin{itemize}
 			\item[*] The introduced system in eq(\ref{eq:attractor_with_f}) is called the \textit{canonical system}.
@@ -474,7 +485,7 @@
 	\begin{alertblock}{}
 		\small Forcing function $f$ is a set of Gaussians that are \textit{activated} as the canonical system $x$ converges to its target.
 	\end{alertblock}
-			
+				
 	\vskip -0.5em
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -484,7 +495,7 @@
 				\caption{$\psi$ Activation}
 			\end{figure}
 		\end{column}
-		
+				
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\includegraphics[height=2cm]{images/weighted_summation}
@@ -506,7 +517,7 @@
 	\begin{itemize}
 		\item $\textbf{y}_d$ is desired trajectory, given by $\ddot{\textbf{y}}_d = \frac{\partial}{\partial t} \dot{\textbf{y}}_d = \frac{\partial}{\partial t} \frac{\partial}{\partial t} \textbf{y}_d$
 	\end{itemize}
-														
+															
 	\begin{exampleblock}{Forcing term}					
 		\begin{itemize}
 			\item Comprised of weighted summation of basis functions
@@ -522,7 +533,7 @@
 			      \end{itemize}
 		\end{itemize}
 	\end{exampleblock}
-				
+					
 	\footnotetext{\tiny Cleveland, William S. ``Robust locally weighted regression and smoothing scatterplots." Journal of the American statistical association 74.368 (1979): 829-836.}
 \end{frame}
 
@@ -532,7 +543,7 @@
 	\begin{itemize}
 		\item[] $\textbf{s} = \left( \begin{array}{c}x_{t_0}(g - y_0) \\ \vdots \\ x_{t_N}(g - y_0) \end{array} \right)$ and $\pmb{\psi}_i = \left( \begin{array}{ccc} \psi_i(t_0) & \dots & 0 \\ 0 & \ddots & 0 \\ 0 & \dots & \psi_i(t_n) \end{array} \right)$
 	\end{itemize}
-			
+				
 	\begin{figure}
 		\includegraphics[width=0.9\textwidth]{images/imitate_path}
 	\end{figure}
