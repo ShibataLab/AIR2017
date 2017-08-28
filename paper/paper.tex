@@ -1,29 +1,21 @@
 \documentclass[sigconf]{acmart}
 \usepackage{subcaption}
 
+\copyrightyear{2017}
+\acmYear{2017}
+
 % Copyright
-%\setcopyright{none}
-%\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
-
-% DOI
-\acmDOI{to_be_inserted_after_paper_is_accepted}
-
-% ISBN
-\acmISBN{1-58113-000-0/00/0010}
+\setcopyright{acmcopyright}
 
 %Conference
-\acmConference[AIR 2017]{Advances in Robotics}{June 28-July 02, 2017}{New Delhi, India}
-\acmYear{2017}
-\copyrightyear{2017}
-
+\acmConference{AIR '17}{June 28-July 2, 2017}{New Delhi, India}
 \acmPrice{15.00}
+
+%ISBN
+\acmISBN{978-1-4503-5294-9/17/06}
+
+% DOI
+\acmDOI{10.1145/3132446.3134878}
 
 \begin{document}
 \title{Robotic cloth manipulation for clothing assistance task using Dynamic Movement
@@ -87,15 +79,15 @@ Primitives}
 
 \maketitle
 
+\section{Introduction}
+\label{sec:introduction}
+Due to the demographic trend in developed countries, robotic assistance in the field of elderly care in home environment is growing \cite{broekens2009assistive}. Although there has been a significant number of research done in this field, robotic clothing assistance is yet an open field for research. It is one of the basic and essential assistance activities in daily life of elderly as well as disabled people. While rigid object manipulation with robots has mainly relied on precise robot control, deformable objects rather require complex control scheme. Clothing assistance is a challenging problem since robot is required to manage two difficulties: (a) robot must do cooperative manipulation by holding clothing article using both the arms while interacting with non-rigid and highly deformable clothing article and (b) maintain safe human-robot interaction with the assisted person whose posture can vary during assistance.
+
 \begin{figure}
 	\includegraphics[width=\linewidth]{setup}
 	\caption{Setup of robotic cloth manipulation task}
 	\label{fig:setup}
 \end{figure}
-
-\section{Introduction}
-\label{sec:introduction}
-Due to the demographic trend in developed countries, robotic assistance in the field of elderly care in home environment is growing \cite{broekens2009assistive}. Although there has been a significant number of research done in this field, robotic clothing assistance is yet an open field for research. It is one of the basic and essential assistance activities in daily life of elderly as well as disabled people. While rigid object manipulation with robots has mainly relied on precise robot control, deformable objects rather require complex control scheme. Clothing assistance is a challenging problem since robot is required to manage two difficulties: (a) robot must do cooperative manipulation by holding clothing article using both the arms while interacting with non-rigid and highly deformable clothing article and (b) maintain safe human-robot interaction with the assisted person whose posture can vary during assistance.
 
 Trajectory variability for clothing assistance is large for different environmental conditions. We need to parametrize the task efficiently so that generalization can be acheived quickly. In this study, we are investigating the applicability of using Dynamic Movement Primitives (DMP) as a task parameterization model for performing clothing assistance task. Robotic cloth manipulation task deals with putting a clothing article on both the arms. The idea of using DMP is inspired by the fact that DMP can learn complex task from the demonstration \cite{ijspeert2003learning, schaal2006dynamic, ijspeert2013dynamical} and thus reduce the manual efforts to design a controller from scratch or to fine-tune various controller parameters. We choose dual arm Baxter robot (Rethink robotics) in this research as it is safe and flexible by design \cite{fitzgerald2013developing}.
 
@@ -187,11 +179,11 @@ We have divided the complete trajectory into two parts: (a) The reaching part, w
 	\centering
 	\begin{subfigure}{.5\linewidth}
 		\includegraphics[width=.9\linewidth]{inclination_plus}
-		\caption{Positive angle}
+	    \caption{Positive angle}
 	\end{subfigure}%
 	\begin{subfigure}{.5\linewidth}
 		\includegraphics[width=.9\linewidth]{inclination_minus}
-		\caption{Negative angle}
+	    \caption{Negative angle}
 	\end{subfigure}
 	\caption{Angle of Inclination measures the bending of arms w.r.t. horizontal line in two-dimensional space.}
 	\label{fig:inclination}
@@ -199,6 +191,10 @@ We have divided the complete trajectory into two parts: (a) The reaching part, w
 
 \section{Experiments}
 \label{sec:experiments}
+Robotic cloth manipulation task contains a dual arm humanoid robot Baxter. Setup of our system is shown in figure \ref{fig:setup}. We choose soft mannequin instead of a human for this experiment. Both the arms of mannequin are open and given support by a metallic stand, to avoid falling down the arms. Mannequin is positioned in such a way so that it resides within limits of workspace of Baxter robot. Both the arms of mannequin are facing towards robot. A Kinect V2 \cite{microsoft2014kinect} sensor is mounted on LCD display of Baxter robot. Kinect sensor can see the mannequin and clothing article and provides depth information, which is necessary for mannequin tracking. The clothing article is put in the arms of Baxter robot manually before starting experiment.
+
+Baxter robot is connected to a computer directly using Ethernet cable. It is controlled using Robot Operating System (ROS) \cite{quigley2009ros}, one of the widely used tools by the researchers in robotics community. We used Baxter robot's API, which is available and supported by ROS to command the robot. Kinect sensor is controlled by open source Kinect API for ROS \cite{iai_kinect2, libfreenect2}. We performed following two experiments to validate our approach: (a) Clothing task using position DMP (b) Failure detection using end-effector forces.
+
 \subsection{Clothing task using position DMP}
 The aim of this experiment is to put sleeveless T-shirt on both the arms of mannequin by using DMP system. We use position data to initialize DMP system, which is being used in this task. The posture of mannequin is changed. At this point, we use Kinect Sensor to get 3D coordinates of wrist and shoulder of mannequin. Now we change start and goal parameter of initial DMP system by using this information. Modified DMP can be acquired by rolling out initial DMP system as described in section \ref{sec:dmp}.
 
@@ -236,19 +232,19 @@ It is clearly visible from the figure \ref{fig:position_force} that the applied 
 	\centering
 	\begin{subfigure}{.4\linewidth}
 		\includegraphics[width=.98\linewidth]{failure_scenario_1}
-		%\caption{}
+        	%\caption{}
 	\end{subfigure}%
 	\begin{subfigure}{.4\linewidth}
 		\includegraphics[width=.98\linewidth]{failure_scenario_2}
-		%\caption{}
+        	%\caption{}
 	\end{subfigure}
 	\begin{subfigure}{.4\linewidth}
 		\includegraphics[width=.98\linewidth]{failure_scenario_3}
-		%\caption{}
+        	%\caption{}
 	\end{subfigure}%
 	\begin{subfigure}{.4\linewidth}
 		\includegraphics[width=.98\linewidth]{failure_scenario_4}
-		%\caption{}
+        %\caption{}
 	\end{subfigure}
 	\caption{Various failure scenarios showing how a clothing article is difficult to manipulate because of inherent non-rigid and flexible nature.}
 	\label{fig:failure_scenarios}
